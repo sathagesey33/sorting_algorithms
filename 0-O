@@ -1,0 +1,4 @@
+The best case - o(n)
+The average case -  O(n^2)
+The worst case -  O(n^2)
+
