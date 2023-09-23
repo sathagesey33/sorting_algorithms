@@ -11,7 +11,7 @@ void bubble_sort(int *array, size_t size)
 	int tempy;
 
 	if (size < 2)
-		return;
+	return;
 
 	for (i = 0; i < size - 1; i++)
 	{
@@ -24,9 +24,9 @@ void bubble_sort(int *array, size_t size)
 	array[kev] = array[kev + 1];
 	array[kev + 1] = tempy;
 
-	print_array(array, size);
-	}
+	print_array(array, size);	}
 	}
 
 	}
 }
+
