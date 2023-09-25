@@ -20,19 +20,23 @@ listint_t *get_elems(listint_t *li)
  */
 void swap_nodes(listint_t **list, listint_t *node)
 {
-	node->next->prev = node->prev;
+    listint_t *prev_node = node->prev;
+    listint_t *next_node = node->next;
 
-	if (node->next->prev)
-	node->prev->next = node->next;
-	else
-	*list = node->next;
+    if (prev_node)
+        prev_node->next = next_node;
+    else
+        *list = next_node;
 
-	node->prev = node->next;
-	node->next = node->next->next;
-	node->prev->next = node;
+    if (next_node)
+        next_node->prev = prev_node;
 
-	if (node->next)
-	node->next->prev = node;
+    node->prev = next_node;
+    node->next = next_node->next;
+    next_node->next = node;
+
+    if (node->next)
+        node->next->prev = node;
 }
 /**
  * cocktail_sort_list - Sorts a doubly linked list in ascending order
