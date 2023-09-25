@@ -1,6 +1,9 @@
 #ifndef SORT_H
 #define SORT_H
 
+#define INCREMENT 1
+#define DECREMENT -1
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stddef.h>
@@ -30,7 +33,9 @@ void selection_sort(int *array, size_t size);
 void quick_sort(int *array, size_t size);
 int lomuto_partition(int *array, int low, int high, size_t size);
 void shell_sort(int *array, size_t size);
-
+void cocktail_sort_list(listint_t **list);
+listint_t *get_elems(listint_t *li);
+void swap_nodes(listint_t **list, listint_t *node);
 
 /* helper function */
 void swap(int *a, int *b);
