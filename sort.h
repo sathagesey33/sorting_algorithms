@@ -40,8 +40,11 @@ void counting_sort(int *array, size_t size);
 void merge(int *array, int *left, size_t left_size,
 		int *right, size_t right_size);
 void merge_sort(int *array, size_t size);
-
+void sift_down(int *array, size_t size, size_t root, size_t max_size);
+void heapify(int *array, size_t size);
+void heap_sort(int *array, size_t size);
 /* helper function */
 void swap(int *a, int *b);
 void quicksort(int *array, int low, int high, size_t size);
+void swap_heap(int *array, size_t size, int a, int b);
 #endif
