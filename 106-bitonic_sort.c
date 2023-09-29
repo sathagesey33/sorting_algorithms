@@ -1,0 +1,65 @@
+#include "sort.h"
+
+/**
+ * bitonic_merge - Merges two bitonic sequences in ascending order.
+ * @array: The array to be sorted.
+ * @low: Starting index of the first sequence.
+ * @count: The number of elements in the sequence.
+ * @dir: 1 for ascending order, 0 for descending order.
+ */
+void bitonic_merge(int *array, size_t low, size_t count, int dir)
+{
+	if (count > 1)
+	{
+	size_t k = count / 2;
+	size_t i;
+
+	for (i = low; i < low + k; i++)
+	{
+	if ((array[i] > array[i + k]) == dir)
+	{
+	int temp = array[i];
+
+	array[i] = array[i + k];
+	array[i + k] = temp;
+	}
+	}
+
+	bitonic_merge(array, low, k, dir);
+	bitonic_merge(array, low + k, k, dir);
+	}
+}
+
+/**
+ * bitonic_sort_recursive - Recursively sorts a bitonic sequence.
+ * @array: The array to be sorted.
+ * @low: Starting index of the sequence.
+ * @count: The number of elements in the sequence.
+ * @dir: 1 for ascending order, 0 for descending order.
+ */
+void bitonic_sort_recursive(int *array, size_t low, size_t count, int dir)
+{
+	if (count > 1)
+	{
+	size_t k = count / 2;
+
+	bitonic_sort_recursive(array, low, k, 1);
+	bitonic_sort_recursive(array, low + k, k, 0);
+
+	bitonic_merge(array, low, count, dir);
+	}
+}
+
+/**
+ * bitonic_sort - Sorts an array of integers in ascending order.
+ * @array: The array to be sorted.
+ * @size: The size of the array.
+ */
+void bitonic_sort(int *array, size_t size)
+{
+	if (!array || size < 2)
+	return;
+
+	bitonic_sort_recursive(array, 0, size, 1);
+}
+
