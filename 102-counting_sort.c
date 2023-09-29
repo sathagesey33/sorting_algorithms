@@ -2,8 +2,8 @@
 
 /**
  * counting_sort - sort array with counting method
- * @array: array to sort
- * @size: size of array
+ * @max: array to sort
+ * @I: size of array
  *
  * Return: nothing
 */
