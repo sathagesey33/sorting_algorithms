@@ -14,6 +14,9 @@ void bitonic_merge(int *array, size_t low, size_t count, int dir)
 	size_t k = count / 2;
 	size_t i;
 
+	printf("Merging [%lu/%lu] (%s):\n", count, count, dir ? "UP" : "DOWN");
+	print_array(array + low, count);
+
 	for (i = low; i < low + k; i++)
 	{
 	if ((array[i] > array[i + k]) == dir)
@@ -58,8 +61,8 @@ void bitonic_sort_recursive(int *array, size_t low, size_t count, int dir)
 void bitonic_sort(int *array, size_t size)
 {
 	if (!array || size < 2)
-	return;
+		return;
 
+	printf("%d", array[0]);
 	bitonic_sort_recursive(array, 0, size, 1);
 }
-
